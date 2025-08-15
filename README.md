@@ -17,3 +17,6 @@ you will be local, so `localhost:3000` will work on your browser
 if you want an optimized version of your website, an example of a build is available in the gh-pages branch or this 
 repository. It is not necessary if you stay in local.
 
+
+### `yarn run deploy`
+
