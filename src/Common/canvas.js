@@ -1,4 +1,5 @@
 import { predict } from "./tensorflowPredictions";
+ import funnyEmotions from "../Constants/funnyEmotions.json";
 import {
   EMOTION_PANEL_BG_COLOR,
   EMOTION_PANEL_COLOR,
@@ -11,7 +12,6 @@ const _setRectStyle = (context) => {
 };
 
 const _drawRect = (context, boundingBox) => {
-  // rectangle draw all around the face
   context.beginPath();
   _setRectStyle(context);
   const { x, y, width } = _getRectDim(boundingBox, context);
@@ -25,6 +25,7 @@ const _getFace = (context, boundingBox) => {
   const height = boundingBox.height * context.canvas.height;
   return context.getImageData(x, y, width, height);
 };
+
 const _setFillStyle = (context, color) => (context.fillStyle = color);
 
 const _getRectDim = (boundingBox, context) => {
@@ -67,26 +68,18 @@ const _clearCanvas = (context) =>
 const _drawImage = (video, context) =>
   context.drawImage(video, 0, 0, context.canvas.width, context.canvas.height);
 
-const _drawPrediction = (context, bb, emotionRecognizer, state) =>
-  _drawEmotionPanel(
-    context,
-    bb,
-    predict(emotionRecognizer, state, _getFace(context, bb))
-  );
+const _drawPrediction = (context, bb, emotionRecognizer, state) => {
+  const predictionKey = predict(emotionRecognizer, state, _getFace(context, bb));
+  const phrases = funnyEmotions[predictionKey] || ["No emotion detected"];
+  const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+  _drawEmotionPanel(context, bb, randomPhrase);
+};
 
-const drawOnCanvas = (
-  state,
-  context,
-  video,
-  boundingBox,
-  emotionRecognizer
-) => {
+const drawOnCanvas = (state, context, video, boundingBox, emotionRecognizer) => {
   _clearCanvas(context);
   _drawImage(video, context);
   for (let bb of boundingBox) {
-    // recuperation of all values into boundingBox (coordinate of face)
     _drawRect(context, bb);
-    // recuperation of face only if boundingBox has valuable coordinates
     if (_isBoundingBoxPositive(bb) && state.isModelSet) {
       _drawPrediction(context, bb, emotionRecognizer, state);
     }
