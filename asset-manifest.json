@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ai-emotion-recognition/static/css/main.fc33c307.css",
-    "main.js": "/ai-emotion-recognition/static/js/main.a13d0c9b.js",
-    "static/js/787.a6852239.chunk.js": "/ai-emotion-recognition/static/js/787.a6852239.chunk.js",
+    "main.js": "/ai-emotion-recognition/static/js/main.e288d9f6.js",
+    "static/js/787.69f41566.chunk.js": "/ai-emotion-recognition/static/js/787.69f41566.chunk.js",
     "index.html": "/ai-emotion-recognition/index.html",
     "main.fc33c307.css.map": "/ai-emotion-recognition/static/css/main.fc33c307.css.map",
-    "main.a13d0c9b.js.map": "/ai-emotion-recognition/static/js/main.a13d0c9b.js.map",
-    "787.a6852239.chunk.js.map": "/ai-emotion-recognition/static/js/787.a6852239.chunk.js.map"
+    "main.e288d9f6.js.map": "/ai-emotion-recognition/static/js/main.e288d9f6.js.map",
+    "787.69f41566.chunk.js.map": "/ai-emotion-recognition/static/js/787.69f41566.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fc33c307.css",
-    "static/js/main.a13d0c9b.js"
+    "static/js/main.e288d9f6.js"
   ]
 }
